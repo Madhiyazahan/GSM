@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX AUTO GEAR | Premium Automotive Styling, Tech & Performance Accessories</title>
+  <meta name="description" content="Shop premium automotive accessories: carbon fiber steering wheels, ambient LED lighting, 4K dashcams, spoilers, and smart tech. 100% vehicle fitment guaranteed.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f0ff'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-perks">
+        <div class="perk-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Free Express Shipping on Orders Over $150</span>
+        </div>
+        <div class="perk-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>100% Laser-Scanned Vehicle Fitment Guarantee</span>
+        </div>
+        <div id="db-status-badge" class="perk-item" style="cursor: pointer; background: rgba(0, 230, 118, 0.12); padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(0, 230, 118, 0.3); color: var(--accent-emerald); font-weight: 600;" title="Click to view & configure Supabase / Database settings">
+          <span id="db-status-dot" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-emerald); box-shadow: 0 0 8px var(--accent-emerald);"></span>
+          <span id="db-status-text">Database: Connecting...</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 4px;"><path d="M12 20v-6M6 20V10M18 20V4"/></svg>
+        </div>
+      </div>
+      <div class="top-bar-promo">
+        <span>Use Code <span class="code-pill">TURBO10</span> for 10% Off Your First Order</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" id="brand-logo">
+        <div class="brand-icon-box">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="brand-name">APEX<span>DRIVE</span></span>
+          <span class="brand-tagline">Automotive Excellence</span>
+        </div>
+      </a>
+
+      <!-- Search Input -->
+      <div class="search-wrapper">
+        <div class="search-input-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="search-input" placeholder="Search steering wheels, ambient LEDs, dashcams, spoilers..." autocomplete="off">
+          <button id="clear-search-btn" class="clear-search-btn" title="Clear search">✕</button>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <!-- Track Order Button -->
+        <button id="header-track-btn" class="action-btn" title="Track Live Order Status">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span>Track Order</span>
+        </button>
+        <!-- Vehicle Garage Button -->
+        <button id="header-garage-btn" class="action-btn garage-btn" title="Manage your vehicle fitment">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="3" width="15" height="13"></rect>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+            <circle cx="5.5" cy="18.5" r="2.5"></circle>
+            <circle cx="18.5" cy="18.5" r="2.5"></circle>
+          </svg>
+          <span id="header-garage-text">Select Ride</span>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button id="header-wishlist-btn" class="action-btn" title="View Wishlist" onclick="window.apexApp.showToast('Your saved items are highlighted with a red heart!', 'info')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span id="wishlist-badge" class="action-badge" style="display: none;">0</span>
+        </button>
+
+        <!-- Shopping Cart Button -->
+        <button id="header-cart-btn" class="action-btn cart-btn" title="Open Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span>Cart</span>
+          <span id="cart-badge" class="action-badge" style="display: none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-banner">
+        <img src="assets/images/hero_car_accessories.jpg" alt="Luxury Automotive Interior with Custom Accessories" class="hero-bg-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span class="hero-pill-dot"></span>
+            Next-Gen Automotive Upgrades 2026
+          </div>
+          <h1 class="hero-title">
+            ENGINEERED FOR <br>
+            <span class="gradient-text">POWER & COCKPIT LUXURY</span>
+          </h1>
+          <p class="hero-desc">
+            Transform your everyday drive into an exotic cockpit experience. Discover custom carbon fiber steering wheels, high-output ambient fiber optics, precision 4K dashcams, and track-tested aero spoilers.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#catalog" class="btn-primary">
+              <span>Explore Gear</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#garage" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span>Fit My Vehicle</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h4>45,000+</h4>
+              <p>Cockpits Upgraded</p>
+            </div>
+            <div class="stat-item">
+              <h4>100%</h4>
+              <p>Fitment Guarantee</p>
+            </div>
+            <div class="stat-item">
+              <h4>4.9 / 5.0</h4>
+              <p>Customer Satisfaction</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Garage Fitment Selector Bar -->
+  <section class="garage-bar-section" id="garage">
+    <div class="container">
+      <div class="garage-box">
+        <div class="garage-info">
+          <div class="garage-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.5a1 1 0 0 0-.8.4L2 11v5h2"></path>
+              <circle cx="6.5" cy="16.5" r="2.5"></circle>
+              <circle cx="16.5" cy="16.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div class="garage-text">
+            <h3>Vehicle Compatibility Finder</h3>
+            <p>Select your make & model to verify 100% plug & play fitment.</p>
+          </div>
+        </div>
+
+        <div class="garage-selectors">
+          <select id="garage-year-select" class="garage-select" aria-label="Select Car Year">
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024" selected>2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+          </select>
+
+          <select id="garage-make-select" class="garage-select" aria-label="Select Car Make">
+            <option value="">Select Make</option>
+          </select>
+
+          <select id="garage-model-select" class="garage-select" aria-label="Select Car Model" disabled>
+            <option value="">Select Model</option>
+          </select>
+
+          <button id="garage-save-btn" class="garage-save-btn">Check Fitment</button>
+
+          <div id="garage-active-badge" class="garage-active-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span id="garage-vehicle-name">2024 BMW M3</span>
+            <span id="garage-reset-btn" class="garage-reset-btn" title="Remove vehicle">Change</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Value Props Banner -->
+  <section class="trust-props-section">
+    <div class="container">
+      <div class="trust-props">
+        <div class="trust-card">
+          <div class="trust-icon-box cyan">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          </div>
+          <div>
+            <h4>100% Fitment Guaranteed</h4>
+            <p>Direct OEM bolt-on & OBD2 plug-and-play.</p>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon-box emerald">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          </div>
+          <div>
+            <h4>Free Express Shipping</h4>
+            <p>On all US & Global orders exceeding $150.</p>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon-box amber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div>
+            <h4>3-Year Apex Warranty</h4>
+            <p>Full replacement guarantee on electronics & carbon.</p>
+          </div>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon-box red">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+          </div>
+          <div>
+            <h4>30-Day Hassle Free Returns</h4>
+            <p>Not 100% satisfied? Return with prepaid label.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Product Catalog Section -->
+  <main class="container" id="catalog">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <h2>Performance & Cockpit Catalog</h2>
+        <p>Curated upgrades crafted for luxury sports cars, sedans, trucks, and performance EVs.</p>
+      </div>
+    </div>
+
+    <!-- Catalog Controls: Category Tabs & Filtering -->
+    <div class="catalog-controls">
+      <div class="category-tabs" role="tablist">
+        <button class="cat-tab active" data-cat="all" role="tab">All Upgrades (12)</button>
+        <button class="cat-tab" data-cat="interior" role="tab">Interior & Steering</button>
+        <button class="cat-tab" data-cat="lighting" role="tab">Lighting & Optics</button>
+        <button class="cat-tab" data-cat="tech" role="tab">Tech & Dashcams</button>
+        <button class="cat-tab" data-cat="performance" role="tab">Performance & Aero</button>
+        <button class="cat-tab" data-cat="care" role="tab">Detailing & Protection</button>
+      </div>
+
+      <div class="secondary-filters">
+        <div class="filter-group-left">
+          <label class="toggle-filter">
+            <input type="checkbox" id="instock-filter">
+            <span>In-Stock Only</span>
+          </label>
+
+          <label class="toggle-filter">
+            <input type="checkbox" id="garage-only-filter">
+            <span>Show Only Guaranteed Fit For My Ride</span>
+          </label>
+        </div>
+
+        <div class="filter-group-right">
+          <label for="sort-select" style="font-size: 0.85rem; color: var(--text-muted);">Sort By:</label>
+          <select id="sort-select" class="sort-select">
+            <option value="featured">Featured / Best Sellers</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Customer Rating</option>
+            <option value="stock">Stock Availability</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div id="products-grid" class="products-grid" aria-live="polite">
+      <!-- Dynamically Rendered by scripts/app.js -->
+    </div>
+  </main>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div id="drawer-backdrop" class="drawer-backdrop"></div>
+  <aside id="cart-drawer" class="cart-drawer" aria-label="Shopping Cart">
+    <div class="drawer-header">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span>Your Shopping Cart</span>
+      </h3>
+      <button id="close-drawer-btn" class="close-drawer-btn" title="Close cart">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="shipping-progress-box">
+      <div id="shipping-progress-msg" class="shipping-progress-text">
+        Add <strong>$150.00</strong> for <strong>Free Priority Shipping</strong>
+      </div>
+      <div class="shipping-bar-track">
+        <div id="shipping-bar-fill" class="shipping-bar-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Container -->
+    <div id="drawer-items" class="drawer-body">
+      <!-- Injected by scripts/app.js -->
+    </div>
+
+    <!-- Drawer Footer & Cost Breakdown -->
+    <div class="drawer-footer">
+      <!-- Promo code input -->
+      <div class="promo-form">
+        <input type="text" id="promo-input" class="promo-input" placeholder="Promo code (e.g. TURBO10)">
+        <button id="apply-promo-btn" class="promo-btn">Apply</button>
+      </div>
+      <div id="applied-promo-container"></div>
+
+      <!-- Cost Lines -->
+      <div class="cart-summary-lines">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div id="cart-discount-row" class="summary-row discount" style="display: none;">
+          <span>Promo Discount</span>
+          <span id="cart-discount">-$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Estimated Shipping</span>
+          <span id="cart-shipping">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Estimated Tax (7.5%)</span>
+          <span id="cart-tax">$0.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Grand Total</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+      </div>
+
+      <button id="proceed-checkout-btn" class="checkout-btn">
+        <span>Proceed to Secure Checkout</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div id="quickview-backdrop" class="modal-backdrop">
+    <div id="quickview-modal" class="quickview-modal" role="dialog" aria-modal="true">
+      <button id="close-quickview-btn" class="close-modal-btn" title="Close">✕</button>
+      <div id="quickview-body">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Step Checkout Modal -->
+  <div id="checkout-backdrop" class="modal-backdrop">
+    <div id="checkout-modal" class="checkout-modal" role="dialog" aria-modal="true">
+      <button id="close-checkout-btn" class="close-modal-btn" title="Close">✕</button>
+      
+      <div class="checkout-header">
+        <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff;">APEX Drive Express Checkout</h2>
+        <div class="checkout-stepper">
+          <div class="step-indicator active" data-step="1">
+            <span class="step-num">1</span>
+            <span class="step-name">Shipping</span>
+          </div>
+          <div class="step-indicator" data-step="2">
+            <span class="step-num">2</span>
+            <span class="step-name">Payment</span>
+          </div>
+          <div class="step-indicator" data-step="3">
+            <span class="step-num">3</span>
+            <span class="step-name">Review</span>
+          </div>
+          <div class="step-indicator" data-step="4">
+            <span class="step-num">4</span>
+            <span class="step-name">Receipt</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="checkout-content">
+        <!-- Step 1: Shipping Details & Speed -->
+        <div class="checkout-step-panel" data-step="1">
+          <h3 class="form-section-title">Shipping & Contact Details</h3>
+          <div class="form-grid">
+            <div class="form-field span-2">
+              <label class="form-label" for="ship-name">Full Name *</label>
+              <input type="text" id="ship-name" class="form-input" placeholder="Alex Sterling" value="Alex Sterling">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="ship-email">Email Address *</label>
+              <input type="email" id="ship-email" class="form-input" placeholder="alex@apexgear.com" value="alex@apexgear.com">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="ship-phone">Phone Number *</label>
+              <input type="tel" id="ship-phone" class="form-input" placeholder="+1 (555) 019-2834" value="+1 (555) 019-2834">
+            </div>
+            <div class="form-field span-2">
+              <label class="form-label" for="ship-address">Street Address *</label>
+              <input type="text" id="ship-address" class="form-input" placeholder="742 Evergreen Terrace, Apt 4B" value="742 Evergreen Terrace">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="ship-city">City *</label>
+              <input type="text" id="ship-city" class="form-input" placeholder="Los Angeles" value="Los Angeles">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="ship-zip">Postal / ZIP Code *</label>
+              <input type="text" id="ship-zip" class="form-input" placeholder="90210" value="90210">
+            </div>
+          </div>
+
+          <h3 class="form-section-title">Select Shipping Speed</h3>
+          <div class="shipping-options">
+            <div class="shipping-option-card selected" data-method="standard">
+              <div class="shipping-option-info">
+                <input type="radio" name="shipping" checked>
+                <div class="shipping-option-text">
+                  <h5>Standard Ground Delivery (3-5 Business Days)</h5>
+                  <p>Tracked FedEx / UPS ground shipping</p>
+                </div>
+              </div>
+              <span class="shipping-option-price">FREE / $12.00</span>
+            </div>
+
+            <div class="shipping-option-card" data-method="express">
+              <div class="shipping-option-info">
+                <input type="radio" name="shipping">
+                <div class="shipping-option-text">
+                  <h5>Apex Express Air (2 Business Days)</h5>
+                  <p>Expedited processing with signature on delivery</p>
+                </div>
+              </div>
+              <span class="shipping-option-price">$19.99</span>
+            </div>
+
+            <div class="shipping-option-card" data-method="priority">
+              <div class="shipping-option-info">
+                <input type="radio" name="shipping">
+                <div class="shipping-option-text">
+                  <h5>Overnight Priority Dispatch (Next Morning)</h5>
+                  <p>Guaranteed next-morning delivery before 12:00 PM</p>
+                </div>
+              </div>
+              <span class="shipping-option-price">$29.99</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Payment Details -->
+        <div class="checkout-step-panel" data-step="2" style="display: none;">
+          <h3 class="form-section-title">Payment Method</h3>
+          
+          <div class="payment-methods-tabs">
+            <button type="button" class="payment-tab-btn active">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+              <span>Credit / Debit</span>
+            </button>
+            <button type="button" class="payment-tab-btn" onclick="window.apexApp.showToast('Apple / Google Pay quick payment selected!', 'info')">
+              <span> Pay / G-Pay</span>
+            </button>
+            <button type="button" class="payment-tab-btn" onclick="window.apexApp.showToast('Pay in 4 interest-free installments via Klarna enabled.', 'info')">
+              <span>Klarna 4x</span>
+            </button>
+          </div>
+
+          <!-- Realistic Credit Card Preview -->
+          <div class="credit-card-preview">
+            <div class="card-top">
+              <div class="card-chip"></div>
+              <span class="card-brand-logo">APEX BLACK</span>
+            </div>
+            <div id="card-preview-num" class="card-number-display">•••• •••• •••• 4242</div>
+            <div class="card-bottom-info">
+              <div>
+                <span style="font-size: 0.65rem; color: var(--text-dim); display: block;">CARDHOLDER</span>
+                <span id="card-preview-name" class="card-holder-name">ALEX STERLING</span>
+              </div>
+              <div>
+                <span style="font-size: 0.65rem; color: var(--text-dim); display: block;">EXPIRES</span>
+                <span id="card-preview-expiry" class="card-expiry-val">12/28</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-field span-2">
+              <label class="form-label" for="card-num-input">Card Number</label>
+              <input type="text" id="card-num-input" class="form-input" placeholder="4242 •••• •••• 4242" value="4242 8492 0184 4242">
+            </div>
+            <div class="form-field span-2">
+              <label class="form-label" for="card-name-input">Cardholder Name</label>
+              <input type="text" id="card-name-input" class="form-input" placeholder="Name on card" value="Alex Sterling">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="card-expiry-input">Expiration (MM/YY)</label>
+              <input type="text" id="card-expiry-input" class="form-input" placeholder="12/28" value="12/28">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="card-cvv-input">Security CVV</label>
+              <input type="password" id="card-cvv-input" class="form-input" placeholder="888" value="888" maxlength="4">
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Order Review -->
+        <div class="checkout-step-panel" data-step="3" style="display: none;">
+          <h3 class="form-section-title">Review & Confirm Your Order</h3>
+          
+          <div id="review-items-list" style="margin-bottom: 20px;">
+            <!-- Injected by JS -->
+          </div>
+
+          <div class="cart-summary-lines" style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="review-subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping & Handling</span>
+              <span id="review-shipping">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Sales Tax</span>
+              <span id="review-tax">$0.00</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total Charged</span>
+              <span id="review-total">$0.00</span>
+            </div>
+          </div>
+
+          <div class="security-badges">
+            <div class="security-badge-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>256-Bit SSL Encrypted</span>
+            </div>
+            <div class="security-badge-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Buyer Protection Verified</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Order Confirmation & Live Tracking Receipt -->
+        <div class="checkout-step-panel" data-step="4" style="display: none;">
+          <div class="confirmation-box">
+            <div class="order-success-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h2 style="font-family: var(--font-heading); font-size: 1.8rem; color: #fff; margin-bottom: 6px;">Payment Successful!</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Thank you for upgrading with APEX DRIVE. We are preparing your order.</p>
+
+            <div id="order-number-pill" class="order-number-pill">Order Confirmation #APX-849204</div>
+
+            <!-- Simulated Tracking Timeline -->
+            <div class="tracking-timeline">
+              <div class="timeline-progress-bar"></div>
+              
+              <div class="timeline-step completed" id="timeline-step-1">
+                <div class="timeline-dot">✓</div>
+                <span class="timeline-label">Order Confirmed</span>
+              </div>
+
+              <div class="timeline-step active" id="timeline-step-2">
+                <div class="timeline-dot">⚡</div>
+                <span class="timeline-label">Picking & Packing</span>
+              </div>
+
+              <div class="timeline-step" id="timeline-step-3">
+                <div class="timeline-dot">🚚</div>
+                <span class="timeline-label">Dispatched (FedEx)</span>
+              </div>
+
+              <div class="timeline-step" id="timeline-step-4">
+                <div class="timeline-dot">🏁</div>
+                <span class="timeline-label">Delivered</span>
+              </div>
+            </div>
+
+            <!-- Itemized Receipt Summary -->
+            <div class="order-receipt-summary">
+              <div class="receipt-header">
+                <span>Item Description</span>
+                <span>Subtotal</span>
+              </div>
+              <div id="receipt-summary-list" class="receipt-items">
+                <!-- Injected by placeOrder() -->
+              </div>
+              <div class="receipt-total-line">
+                <span>Amount Paid</span>
+                <span id="receipt-grand-total">$0.00</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px;">
+              <button id="print-receipt-btn" class="btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                <span>Print Order Receipt</span>
+              </button>
+              <button id="continue-shopping-btn" class="btn-primary">
+                <span>Continue Browsing</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkout Navigation Buttons (Step 1-3) -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--border-subtle);">
+          <button id="checkout-prev-btn" class="btn-secondary" style="display: none;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <span>Back</span>
+          </button>
+
+          <button id="checkout-next-btn" class="btn-primary" style="margin-left: auto;">
+            <span>Continue</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+          <button id="place-order-btn" class="btn-primary" style="display: none; background: linear-gradient(135deg, var(--accent-emerald) 0%, #00b0ff 100%); margin-left: auto;">
+            <span>🔒 Authorize & Place Order</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase Cloud Connection & Sync Modal -->
+  <div id="supabase-modal-backdrop" class="modal-backdrop">
+    <div id="supabase-modal" class="checkout-modal" style="max-width: 640px;" role="dialog" aria-modal="true">
+      <button id="close-supabase-btn" class="close-modal-btn" title="Close">✕</button>
+      <div style="padding: 32px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+          <div style="width: 38px; height: 38px; border-radius: 8px; background: rgba(62, 207, 142, 0.15); border: 1px solid #3ecf8e; display: flex; align-items: center; justify-content: center; color: #3ecf8e; flex-shrink: 0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L2.203 12.424l-.43.562a.396.396 0 0 0 .316.638H12v8.958a.396.396 0 0 0 .716.233l9.081-12.261.43-.562a.396.396 0 0 0-.865-.638z"/>
+            </svg>
+          </div>
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff;">Supabase Cloud Backend Integration</h2>
+            <span style="font-size: 0.78rem; color: #3ecf8e; font-weight: 600;">PostgreSQL Cloud Database & Realtime API</span>
+          </div>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin: 12px 0 18px;">
+          Connect your live Supabase project to store orders, real-time vehicle fitment, stock levels, and customer reviews in your PostgreSQL cloud database.
+        </p>
+
+        <!-- Current Status Banner -->
+        <div id="supabase-current-status-box" style="padding: 14px; border-radius: var(--radius-sm); background: var(--bg-surface); border: 1px solid var(--border-medium); margin-bottom: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.82rem; color: var(--text-muted);">Active Database Engine:</span>
+            <span id="supabase-modal-engine" style="font-weight: 700; color: var(--accent-emerald);">Checking...</span>
+          </div>
+        </div>
+
+        <!-- Credentials Form -->
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px;">
+          <div class="form-field">
+            <label class="form-label" for="supabase-url-input">Supabase Project URL</label>
+            <input type="url" id="supabase-url-input" class="form-input" placeholder="https://your-project-ref.supabase.co">
+            <span style="font-size: 0.72rem; color: var(--text-dim);">Found in: Supabase Dashboard &gt; Project Settings &gt; API &gt; Project URL</span>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="supabase-key-input">Supabase API Key (anon / public or service_role)</label>
+            <input type="password" id="supabase-key-input" class="form-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+            <span style="font-size: 0.72rem; color: var(--text-dim);">Found in: Supabase Dashboard &gt; Project Settings &gt; API &gt; Project API keys</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
+          <button id="save-supabase-btn" class="btn-primary" style="flex: 1; min-width: 180px; justify-content: center; background: linear-gradient(135deg, #3ecf8e 0%, #00b0ff 100%);">
+            <span>Connect & Save</span>
+          </button>
+          <button id="sync-supabase-btn" class="btn-secondary" style="justify-content: center;" title="Upload all 12 accessories and vehicle models into Supabase">
+            <span>Sync Catalog to Cloud</span>
+          </button>
+        </div>
+
+        <!-- 3-Step Setup Instructions -->
+        <div style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 0.8rem; color: var(--text-muted); line-height: 1.6;">
+          <strong style="color: #fff; display: block; margin-bottom: 6px;">⚡ Quick Supabase Setup Guide:</strong>
+          <ol style="margin-left: 18px;">
+            <li>In your Supabase dashboard, navigate to <strong>SQL Editor</strong>.</li>
+            <li>Open the provided <code>supabase_schema.sql</code> file, paste it into the editor, and click <strong>Run</strong>.</li>
+            <li>Copy your <strong>Project URL</strong> and <strong>API Key</strong> above, click <strong>Connect</strong>, and your store is 100% cloud-powered!</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Track Order Modal -->
+  <div id="track-order-backdrop" class="modal-backdrop">
+    <div id="track-order-modal" class="checkout-modal" style="max-width: 620px;" role="dialog" aria-modal="true">
+      <button id="close-track-btn" class="close-modal-btn" title="Close">✕</button>
+      <div style="padding: 32px;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin-bottom: 6px;">Live Database Order Tracker</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 20px;">Enter your APEX order number to look up live fulfillment and shipping status from our SQLite database.</p>
+        
+        <div style="display: flex; gap: 10px; margin-bottom: 24px;">
+          <input type="text" id="track-order-input" class="form-input" style="flex: 1; text-transform: uppercase;" placeholder="e.g. APEX-849204 or APX-123456">
+          <button id="lookup-order-btn" class="btn-primary" style="padding: 0 20px;">
+            <span>Lookup</span>
+          </button>
+        </div>
+
+        <div id="track-order-result" style="display: none;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="assertive"></div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about">
+          <a href="#" class="brand-logo" style="margin-bottom: 12px;">
+            <div class="brand-icon-box" style="width: 36px; height: 36px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <div>
+              <span class="brand-name">APEX<span>DRIVE</span></span>
+            </div>
+          </a>
+          <p>
+            Architects of high-performance car cockpit accessories, dry carbon fiber aero, intelligent optics, and vehicle electronics. Built by enthusiasts, for enthusiasts.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon" title="Instagram">IG</a>
+            <a href="#" class="social-icon" title="YouTube">YT</a>
+            <a href="#" class="social-icon" title="TikTok">TT</a>
+            <a href="#" class="social-icon" title="Discord">DC</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product Lines</h4>
+          <ul class="footer-links">
+            <li><a href="#catalog">Custom Carbon Steering Wheels</a></li>
+            <li><a href="#catalog">LuminaRGB Ambient Kits</a></li>
+            <li><a href="#catalog">4K Sony Starvis Dashcams</a></li>
+            <li><a href="#catalog">Aero Spoilers & Diffusers</a></li>
+            <li><a href="#catalog">15W MagSafe Wireless Mounts</a></li>
+            <li><a href="#catalog">Graphene Ceramic Detailing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#garage">Vehicle Fitment Guide</a></li>
+            <li><a href="#">Order Tracking & Returns</a></li>
+            <li><a href="#">Installation Tutorials & Manuals</a></li>
+            <li><a href="#">3-Year Apex Warranty</a></li>
+            <li><a href="#">Wholesale & Dealership Inquiries</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Join The Apex Club</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+            Receive secret coupon drops, new fitment releases, and track day invites.
+          </p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); window.apexApp.showToast('Thank you for subscribing! Check your inbox for 10% off.', 'success');">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="newsletter-btn">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 APEX DRIVE Accessories Inc. All rights reserved. Precision Automotive Engineering.
+        </div>
+        <div class="payment-badges">
+          <span class="pay-badge">Apple Pay</span>
+          <span class="pay-badge">Google Pay</span>
+          <span class="pay-badge">Visa</span>
+          <span class="pay-badge">Mastercard</span>
+          <span class="pay-badge">Amex</span>
+          <span class="pay-badge">Klarna</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================== SUPABASE CONFIG MODAL ====================== -->
+  <div id="supabase-modal-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); z-index:10000; align-items:center; justify-content:center;" onclick="if(event.target===this)document.getElementById('supabase-modal-overlay').style.display='none'">
+    <div style="background:linear-gradient(135deg,#0d1117 0%,#161b22 100%); border:1px solid rgba(0,240,255,0.2); border-radius:20px; padding:40px; max-width:560px; width:90%; box-shadow:0 30px 80px rgba(0,0,0,0.7), 0 0 60px rgba(0,240,255,0.08); font-family:'Inter',sans-serif; position:relative;">
+      <!-- Close button -->
+      <button onclick="document.getElementById('supabase-modal-overlay').style.display='none'" style="position:absolute; top:16px; right:16px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#aaa; border-radius:8px; width:32px; height:32px; cursor:pointer; font-size:18px; display:flex; align-items:center; justify-content:center;">✕</button>
+
+      <!-- Header -->
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:28px;">
+        <div style="width:48px; height:48px; background:linear-gradient(135deg,#3ecf8e,#1fa36a); border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2L2 7l10 5 10-5-10-5M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div>
+          <h2 style="margin:0; color:#fff; font-size:1.3rem; font-weight:700;">Connect Supabase Database</h2>
+          <p style="margin:4px 0 0; color:#8b949e; font-size:0.85rem;">Link to PostgreSQL Cloud for persistent orders & real-time inventory</p>
+        </div>
+      </div>
+
+      <!-- Current Status -->
+      <div id="supa-status-box" style="background:rgba(0,240,255,0.05); border:1px solid rgba(0,240,255,0.15); border-radius:12px; padding:14px 18px; margin-bottom:24px; display:flex; align-items:center; gap:10px;">
+        <span id="supa-status-dot" style="width:10px; height:10px; border-radius:50%; background:#f59e0b; box-shadow:0 0 8px #f59e0b; flex-shrink:0;"></span>
+        <span id="supa-status-msg" style="color:#cdd9e5; font-size:0.85rem;">Checking database status...</span>
+      </div>
+
+      <!-- Form -->
+      <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
+        <div>
+          <label style="display:block; color:#8b949e; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Supabase Project URL</label>
+          <input id="supa-url-input" type="url" placeholder="https://xxxxxxxxxxxx.supabase.co" style="width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 16px; color:#fff; font-size:0.9rem; outline:none; box-sizing:border-box; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(0,240,255,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        </div>
+        <div>
+          <label style="display:block; color:#8b949e; font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Supabase Anon / Service Key</label>
+          <input id="supa-key-input" type="password" placeholder="eyJhbGci... (anon or service_role key)" style="width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:12px 16px; color:#fff; font-size:0.9rem; outline:none; box-sizing:border-box; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(0,240,255,0.5)'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div style="display:flex; gap:12px; margin-bottom:24px;">
+        <button id="supa-connect-btn" onclick="window.connectSupabase()" style="flex:1; background:linear-gradient(135deg,#3ecf8e,#1fa36a); color:#fff; border:none; border-radius:10px; padding:14px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:transform 0.15s, box-shadow 0.15s;" onmouseover="this.style.transform='scale(1.02)';this.style.boxShadow='0 8px 30px rgba(62,207,142,0.4)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='none'">
+          ⚡ Connect to Supabase
+        </button>
+        <button id="supa-sync-btn" onclick="window.syncToSupabase()" style="background:rgba(255,255,255,0.06); color:#cdd9e5; border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:14px 20px; font-size:0.9rem; font-weight:600; cursor:pointer; transition:all 0.15s; white-space:nowrap;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">
+          ↑ Sync Data
+        </button>
+      </div>
+
+      <!-- How-to Steps -->
+      <details style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:14px 18px;">
+        <summary style="color:#8b949e; font-size:0.82rem; cursor:pointer; font-weight:600; list-style:none; display:flex; align-items:center; gap:8px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          How to get your Supabase credentials (3 steps)
+        </summary>
+        <ol style="color:#8b949e; font-size:0.82rem; line-height:1.8; margin:12px 0 0; padding-left:20px;">
+          <li>Go to <strong style="color:#3ecf8e;">supabase.com</strong> → Create a free project → Wait ~2 min for setup</li>
+          <li>In your project dashboard → <strong style="color:#cdd9e5;">Project Settings → API</strong> → Copy the <em>Project URL</em> and <em>anon public</em> key</li>
+          <li>Open <strong style="color:#cdd9e5;">SQL Editor → New Query</strong> → Paste & run the contents of <code style="background:rgba(0,240,255,0.1); padding:2px 6px; border-radius:4px; color:#00f0ff;">supabase_schema.sql</code> from this project folder to create all tables</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+  <!-- ===================================================================== -->
+
+  <!-- Modular Scripts -->
+  <script type="module" src="scripts/products.js"></script>
+  <script type="module" src="scripts/cart.js"></script>
+  <script type="module" src="scripts/app.js"></script>
+
+  <!-- Supabase Modal Logic -->
+  <script>
+    // Open modal when DB status badge is clicked
+    document.getElementById('db-status-badge').addEventListener('click', function() {
+      document.getElementById('supabase-modal-overlay').style.display = 'flex';
+      window.refreshSupabaseStatus();
+    });
+
+    window.refreshSupabaseStatus = async function() {
+      const dot = document.getElementById('supa-status-dot');
+      const msg = document.getElementById('supa-status-msg');
+      try {
+        const r = await fetch('/api/health');
+        const d = await r.json();
+        const isSupabase = d.engine === 'supabase';
+        dot.style.background = isSupabase ? '#3ecf8e' : '#f59e0b';
+        dot.style.boxShadow = isSupabase ? '0 0 8px #3ecf8e' : '0 0 8px #f59e0b';
+        msg.textContent = isSupabase
+          ? `✅ Connected to Supabase Cloud  •  ${d.products_count} products  •  ${d.orders_count} orders`
+          : `🟡 Using SQLite Local Fallback  •  ${d.products_count} products  •  ${d.orders_count} orders`;
+        // Also update topbar
+        document.getElementById('db-status-text').textContent = isSupabase ? '⚡ Supabase Cloud' : '🟢 SQLite Local';
+        document.getElementById('db-status-dot').style.background = isSupabase ? '#3ecf8e' : '#f59e0b';
+        // Pre-fill URL if already configured
+        const cfg = await fetch('/api/supabase/config');
+        const cfgd = await cfg.json();
+        if (cfgd.url) document.getElementById('supa-url-input').value = cfgd.url;
+      } catch(e) {
+        msg.textContent = '❌ Server unreachable — make sure server.py is running';
+        dot.style.background = '#f85149';
+        dot.style.boxShadow = '0 0 8px #f85149';
+      }
+    };
+
+    window.connectSupabase = async function() {
+      const url = document.getElementById('supa-url-input').value.trim();
+      const key = document.getElementById('supa-key-input').value.trim();
+      const btn = document.getElementById('supa-connect-btn');
+      if (!url || !key) { alert('Please enter both the Supabase URL and API Key.'); return; }
+      btn.textContent = '⏳ Connecting...';
+      btn.disabled = true;
+      try {
+        const r = await fetch('/api/supabase/config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url, key })
+        });
+        const d = await r.json();
+        if (d.success) {
+          window.refreshSupabaseStatus();
+          btn.textContent = '✅ Connected!';
+          btn.style.background = 'linear-gradient(135deg,#3ecf8e,#1fa36a)';
+          if (!d.hasTables) {
+            document.getElementById('supa-status-msg').textContent = '⚠️ Connected but no tables found — run supabase_schema.sql in Supabase SQL Editor first, then click ↑ Sync Data';
+          } else {
+            setTimeout(() => { document.getElementById('supabase-modal-overlay').style.display = 'none'; }, 1800);
+          }
+        } else {
+          btn.textContent = '❌ ' + (d.error || 'Connection failed');
+          btn.style.background = 'linear-gradient(135deg,#f85149,#b91c1c)';
+        }
+      } catch(e) {
+        btn.textContent = '❌ Server Error';
+      }
+      setTimeout(() => { btn.textContent = '⚡ Connect to Supabase'; btn.disabled = false; btn.style.background = 'linear-gradient(135deg,#3ecf8e,#1fa36a)'; }, 3000);
+    };
+
+    window.syncToSupabase = async function() {
+      const btn = document.getElementById('supa-sync-btn');
+      btn.textContent = '⏳ Syncing...';
+      btn.disabled = true;
+      try {
+        const r = await fetch('/api/supabase/sync', { method: 'POST' });
+        const d = await r.json();
+        btn.textContent = d.success ? '✅ Synced!' : '❌ ' + (d.error || 'Sync failed');
+        if (d.success) window.refreshSupabaseStatus();
+      } catch(e) {
+        btn.textContent = '❌ Error';
+      }
+      setTimeout(() => { btn.textContent = '↑ Sync Data'; btn.disabled = false; }, 3000);
+    };
+
+    // Initialize DB status badge on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      fetch('/api/health').then(r => r.json()).then(d => {
+        const isSupabase = d.engine === 'supabase';
+        document.getElementById('db-status-text').textContent = isSupabase ? '⚡ Supabase Cloud' : '🟢 SQLite Local';
+        document.getElementById('db-status-dot').style.background = isSupabase ? '#3ecf8e' : '#f59e0b';
+      }).catch(() => {
+        document.getElementById('db-status-text').textContent = '🔴 Server Offline';
+        document.getElementById('db-status-dot').style.background = '#f85149';
+      });
+    });
+  </script>
+</body>
+</html>
